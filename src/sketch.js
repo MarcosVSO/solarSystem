@@ -21,12 +21,19 @@ function draw() {
   background(10);
   translate(canvasW/2,canvasH/2);
   sol.display();
+  push();
   rotate(terra.translation());
   terra.display();
+  pop();
+  push();
   rotate(mercurio.translation());
   mercurio.display();
+  pop();
+  push()
   rotate(venus.translation());
   venus.display();
+  pop();
+  mercurio.velocityDebugger();
 }
 
 class Planet{
@@ -45,12 +52,15 @@ class Planet{
   }
 
   translation(){
-    this.angle = float(this.angle + 1 * this.veloctity);
-    print(this.angle);
+    this.angle = float(this.angle + this.veloctity);
     if(this.angle >= 360){
       this.angle = 0;
     }
     return float(this.angle);
+  }
+
+  velocityDebugger(){
+    print(this.angle);
   }
 }
 
